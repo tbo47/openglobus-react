@@ -1,9 +1,10 @@
-import React from 'react';
+import { useEffect } from 'react';
+import '@openglobus/og/css/og.css';
 import './App.css';
 import { XYZ, Globe, GlobusTerrain } from '@openglobus/og';
 
-function App() {
-  setTimeout(() => {
+export const App = () => {
+  useEffect(() => {
     const osm = new XYZ("OpenStreetMap", {
       isBaseLayer: true,
       url: "//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
@@ -19,14 +20,8 @@ function App() {
       resourcesSrc: "../res",    // Night and water mask terxtures folder
       viewExtent: [5.56707, 45.15679, 5.88834, 45.22260]
     });
-  }, 1000);
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <div id="globus" className="Openglobus-map"></div>
-      </header>
-    </div>
+    <div id="globus" className="Openglobus-map"></div>
   );
 }
-
-export default App;
